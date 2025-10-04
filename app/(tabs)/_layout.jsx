@@ -18,6 +18,9 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: "rgba(3, 111, 15, 0.65)", // yaha background color
           borderTopWidth: 0, // optional, agar top border remove karna ho
+          height:5,
+          paddingBottom:0,
+          paddingTop:0,
         },
       }}
     >

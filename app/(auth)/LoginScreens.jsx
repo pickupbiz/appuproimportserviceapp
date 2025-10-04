@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import SignInWithGoogle from "./SignInWithGoogle";
 
 const LoginScreen = () => {
   const router = useRouter();
@@ -46,6 +47,7 @@ const LoginScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Email"
+            placeholderTextColor="#999"
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
@@ -59,6 +61,7 @@ const LoginScreen = () => {
             <TextInput
               style={styles.passwordInput}
               placeholder="Password"
+              placeholderTextColor="#999"
               secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
@@ -78,13 +81,38 @@ const LoginScreen = () => {
             </Text>
           )}
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={[styles.button, !isFormValid && styles.buttonDisabled]}
             onPress={handleLogin}
             disabled={!isFormValid}
           >
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.button]}
+            onPress={() => router.push("/(auth)/SignInWithGoogle")}
+          >
+            <Text style={{ fontWeight: "bold", textAlign: "center" }}>
+              SignIn with Google
+            </Text>
+          </TouchableOpacity> */}
+
+          <View style={styles.buttonRow}>
+            {/* Normal Login Button */}
+            <TouchableOpacity
+              style={[styles.button, !isFormValid && styles.buttonDisabled]}
+              onPress={handleLogin}
+              disabled={!isFormValid}
+            >
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+
+            {/* Google Sign-In Button */}
+            <View style={{ marginLeft: 10 }}>
+              <SignInWithGoogle />
+            </View>
+          </View>
         </View>
       </View>
     </ImageBackground>
@@ -135,22 +163,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
+    color: "#333",
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#ddd",
     marginBottom: 10,
     paddingHorizontal: 15,
   },
-  passwordInput: { flex: 1, height: 50 },
+  passwordInput: { flex: 1, height: 50, color: "#333" },
   errorText: { width: "100%", fontSize: 12, color: "red", marginBottom: 5 },
   button: {
-    width: "100%",
+    width: 100,
     height: 50,
     backgroundColor: "#026f1271",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
     marginTop: 10,
+  },
+  buttonRow: {
+    flexDirection: "row", // side by side
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 15,
   },
   buttonDisabled: { backgroundColor: "#f1f5f16d" },
   buttonText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
