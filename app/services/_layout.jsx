@@ -7,7 +7,7 @@ export default function ServicesLayout() {
         screenOptions={{
           headerBackTitleVisible: false,
           headerStyle: { backgroundColor: "#047520" }, // Header ka bg
-          headerTintColor: "#047520", // Header title aur back arrow ka color
+          headerTintColor: "#fff", // Header title aur back arrow ka color
           headerTitleStyle: {
             color: "#fff",
           },
